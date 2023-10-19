@@ -10,87 +10,87 @@ using AmyCherrez_EjercicioCF.Models;
 
 namespace AmyCherrez_EjercicioCF.Controllers
 {
-    public class BurgersController : Controller
+    public class PromosController : Controller
     {
         private readonly AmyCherrez_EjercicioCFContext _context;
 
-        public BurgersController(AmyCherrez_EjercicioCFContext context)
+        public PromosController(AmyCherrez_EjercicioCFContext context)
         {
             _context = context;
         }
 
-        // GET: Burgers
+        // GET: Promos
         public async Task<IActionResult> Index()
         {
-              return _context.Burger != null ? 
-                          View(await _context.Burger.ToListAsync()) :
-                          Problem("Entity set 'AmyCherrez_EjercicioCFContext.Burger'  is null.");
+              return _context.Promo != null ? 
+                          View(await _context.Promo.ToListAsync()) :
+                          Problem("Entity set 'AmyCherrez_EjercicioCFContext.Promo'  is null.");
         }
 
-        // GET: Burgers/Details/5
+        // GET: Promos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Burger == null)
+            if (id == null || _context.Promo == null)
             {
                 return NotFound();
             }
 
-            var burger = await _context.Burger
+            var promo = await _context.Promo
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (burger == null)
+            if (promo == null)
             {
                 return NotFound();
             }
 
-            return View(burger);
+            return View(promo);
         }
 
-        // GET: Burgers/Create
+        // GET: Promos/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Burgers/Create
+        // POST: Promos/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,WithCheese,Precio")] Burgeer burger)
+        public async Task<IActionResult> Create([Bind("PromoId,PromoName,PromoDescription,ID")] Promo promo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(burger);
+                _context.Add(promo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(burger);
+            return View(promo);
         }
 
-        // GET: Burgers/Edit/5
+        // GET: Promos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Burger == null)
+            if (id == null || _context.Promo == null)
             {
                 return NotFound();
             }
 
-            var burger = await _context.Burger.FindAsync(id);
-            if (burger == null)
+            var promo = await _context.Promo.FindAsync(id);
+            if (promo == null)
             {
                 return NotFound();
             }
-            return View(burger);
+            return View(promo);
         }
 
-        // POST: Burgers/Edit/5
+        // POST: Promos/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,WithCheese,Precio")] Burgeer burger)
+        public async Task<IActionResult> Edit(int id, [Bind("PromoId,PromoName,PromoDescription,ID")] Promo promo)
         {
-            if (id != burger.ID)
+            if (id != promo.ID)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace AmyCherrez_EjercicioCF.Controllers
             {
                 try
                 {
-                    _context.Update(burger);
+                    _context.Update(promo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BurgerExists(burger.ID))
+                    if (!PromoExists(promo.ID))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace AmyCherrez_EjercicioCF.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(burger);
+            return View(promo);
         }
 
-        // GET: Burgers/Delete/5
+        // GET: Promos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Burger == null)
+            if (id == null || _context.Promo == null)
             {
                 return NotFound();
             }
 
-            var burger = await _context.Burger
+            var promo = await _context.Promo
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (burger == null)
+            if (promo == null)
             {
                 return NotFound();
             }
 
-            return View(burger);
+            return View(promo);
         }
 
-        // POST: Burgers/Delete/5
+        // POST: Promos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Burger == null)
+            if (_context.Promo == null)
             {
-                return Problem("Entity set 'AmyCherrez_EjercicioCFContext.Burger'  is null.");
+                return Problem("Entity set 'AmyCherrez_EjercicioCFContext.Promo'  is null.");
             }
-            var burger = await _context.Burger.FindAsync(id);
-            if (burger != null)
+            var promo = await _context.Promo.FindAsync(id);
+            if (promo != null)
             {
-                _context.Burger.Remove(burger);
+                _context.Promo.Remove(promo);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BurgerExists(int id)
+        private bool PromoExists(int id)
         {
-          return (_context.Burger?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Promo?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

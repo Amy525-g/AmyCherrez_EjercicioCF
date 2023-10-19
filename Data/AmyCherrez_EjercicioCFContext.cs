@@ -14,6 +14,8 @@ namespace AmyCherrez_EjercicioCF.Data
         {
         }
 
-        public DbSet<AmyCherrez_EjercicioCF.Models.Burger> Burger { get; set; } = default!;
+        public DbSet<AmyCherrez_EjercicioCF.Models.Burgeer> Burger { get; set; } = default!;
+
+        public DbSet<AmyCherrez_EjercicioCF.Models.Promo>? Promo { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace AmyCherrez_EjercicioCF.Models
 {
-    public class Burger
+    public class Burgeer
     {
         public int ID { get; set; }
 
@@ -12,5 +12,6 @@ namespace AmyCherrez_EjercicioCF.Models
 
         [Range(0.01,99.99)]
         public decimal Precio { get; set; }
+        public List<Promo>? Promo { get; set; }
     }
 }

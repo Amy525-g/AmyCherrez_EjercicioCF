@@ -1,4 +1,4 @@
-﻿@model AmyCherrez_EjercicioCF.Models.Burgeer
+﻿@model AmyCherrez_EjercicioCF.Models.Promo
 
 @{
     ViewData["Title"] = "Details";
@@ -7,26 +7,26 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Burger</h4>
+    <h4>Promo</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.PromoId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.PromoId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.WithCheese)
+            @Html.DisplayNameFor(model => model.PromoName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.WithCheese)
+            @Html.DisplayFor(model => model.PromoName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Precio)
+            @Html.DisplayNameFor(model => model.PromoDescription)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Precio)
+            @Html.DisplayFor(model => model.PromoDescription)
         </dd>
     </dl>
 </div>
