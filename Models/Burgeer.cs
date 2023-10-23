@@ -10,8 +10,24 @@ namespace AmyCherrez_EjercicioCF.Models
         public string? Name { get; set; }
         public bool WithCheese { get; set; }
 
-        [Range(0.01,99.99)]
+        [ValidarRango]
         public decimal Precio { get; set; }
         public List<Promo>? Promo { get; set; }
+    }
+
+    public class ValidarRango:ValidationAttribute
+    {
+        public override bool IsValid(object? value)
+        {
+            decimal valor = (decimal)value;
+            if (valor < 10) 
+            { 
+                return false; 
+            }
+            else
+            { 
+                return true; 
+            }  
+        }
     }
 }
